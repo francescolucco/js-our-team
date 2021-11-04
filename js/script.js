@@ -33,37 +33,79 @@ const teamCard = [
 
 ]
 
-
-
-// creo una variabile vuota contente una stringa che utilizzerò per stamapare il testo HTML
+// 2. creo una variabile vuota contente una stringa che utilizzerò per stamapare il testo HTML
 let html = '';
-// creo la costante che mi aggancia il punto su cui andare a stampare sul DOM
+
+// 3. creo la costante che mi aggancia il punto su cui andare a stampare sul DOM
 const teamContainer = document.querySelector('.team-container');
 
-// 3. Utilizzo un ciclo "for in" per ricavare tutte le informazioni dei singoli utenti
-for(let i = 0; i < teamCard.length; i++){
+// 4. Utilizzo un ciclo "for" attraverso la mia funzione "stampa" per stampare le informazioni sul foglio HTML
+stampaCardHTLM (teamCard);
 
-    // let htmlDeiRuoli = '';
+// 5. Al click:
 
-    // for(let indiceRole = 0; indiceRole < teamCard.role) {
-    //   htmlDeiRuoli += `<p>${teamCard.role[indiceRole]</p>`
-    // }
+document.getElementById('addMemberButton').addEventListener('click', function(){
 
+      //5.1 - Creo un oggetto vuoto
+
+  let newTeamMember = {
+    cardImage: '',
+    name: '',
+    role: '',
+  };
+
+      //5.2 - Rilevo i dati aggiunti dal form
+
+  let imageEntered = document.getElementById('image').value;
+  console.log(imageEntered);
+  newTeamMember.cardImage = imageEntered;
+  
+  let nameEntered = document.getElementById('name').value;
+  console.log(nameEntered);
+  newTeamMember.name = nameEntered;
+  
+  let roleEntered = document.getElementById('role').value;
+  console.log(roleEntered);
+  newTeamMember.role = roleEntered;
+
+  console.log(newTeamMember);
+
+      //5.3 - Li pusho all'interno dell'array contenente gli   oggetti
+
+  teamCard.push(newTeamMember);
+
+  console.log(teamCard);
+
+    //5.4 - Ristampo le card su HTML utilizzando la mia funzione
+
+  stampaCardHTLM (teamCard);
+
+});
+
+
+/// § § § ---- FUNZIONI ----- § § § ///
+
+function stampaCardHTLM (listaOggetti){
+  for(let i = 0; i < (listaOggetti).length; i++){
     html += 
     `<div class="team-card">
       <div class="card-image">
-        <img src="img/${teamCard[i].cardImage}" alt="${teamCard[i].name}" />
+        <img src="img/${(listaOggetti)[i].cardImage}" alt="${(listaOggetti)[i].name}" />
       </div>
       <div class="card-text">
-        <h3>${teamCard[i].name}</h3>
-        <p>${teamCard[i].role}</p>
+        <h3>${(listaOggetti)[i].name}</h3>
+        <p>${(listaOggetti)[i].role}</p>
       </div>
     </div>`
     console.log(html);
     teamContainer.innerHTML = html;
+  }
 }
-  
 
 
+//     // let htmlDeiRuoli = '';
 
+//     // for(let indiceRole = 0; indiceRole < teamCard.role) {
+//     //   htmlDeiRuoli += `<p>${teamCard.role[indiceRole]</p>`
+//     // }
 
