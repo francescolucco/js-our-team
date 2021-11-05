@@ -85,16 +85,53 @@ document.getElementById('addMemberButton').addEventListener('click', function(){
 
 /// § § § ---- FUNZIONI ----- § § § ///
 
+// 1§ - ciclo tradizionale
+// function stampaCardHTLM (listaOggetti){
+//   for(let i = 0; i < (listaOggetti).length; i++){
+//     html += 
+//     `<div class="team-card">
+//       <div class="card-image">
+//         <img src="img/${(listaOggetti)[i].cardImage}" alt="${(listaOggetti)[i].name}" />
+//       </div>
+//       <div class="card-text">
+//         <h3>${(listaOggetti)[i].name}</h3>
+//         <p>${(listaOggetti)[i].role}</p>
+//       </div>
+//     </div>`
+//     console.log(html);
+//     teamContainer.innerHTML = html;
+//   }
+// }
+
+// 1§ - ciclo FOR IN
+// function stampaCardHTLM (listaOggetti){
+//   for(let index in listaOggetti){
+//     html += 
+//     `<div class="team-card">
+//       <div class="card-image">
+//         <img src="img/${(listaOggetti)[index].cardImage}" alt="${(listaOggetti)[index].name}" />
+//       </div>
+//       <div class="card-text">
+//         <h3>${(listaOggetti)[index].name}</h3>
+//         <p>${(listaOggetti)[index].role}</p>
+//       </div>
+//     </div>`
+//     console.log(html);
+//     teamContainer.innerHTML = html;
+//   }
+// }
+
+// 1§ - ciclo FOR OF
 function stampaCardHTLM (listaOggetti){
-  for(let i = 0; i < (listaOggetti).length; i++){
+  for(let member of listaOggetti){
     html += 
     `<div class="team-card">
       <div class="card-image">
-        <img src="img/${(listaOggetti)[i].cardImage}" alt="${(listaOggetti)[i].name}" />
+        <img src="img/${member.cardImage}" alt="${member.name}" />
       </div>
       <div class="card-text">
-        <h3>${(listaOggetti)[i].name}</h3>
-        <p>${(listaOggetti)[i].role}</p>
+        <h3>${member.name}</h3>
+        <p>${member.role}</p>
       </div>
     </div>`
     console.log(html);
